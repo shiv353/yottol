@@ -7,4 +7,16 @@ const connection = mysql.createPool({
   multipleStatements: true,
 });
 
-module.exports = {connection}
+
+const connectDB = async () => {
+  connection.getConnection((err, connection) => {
+    if (err) {
+      console.error('Error connecting to the database: ' + err.stack);
+      return;
+    }
+    console.log('Connected to the database as ID ' + connection.threadId);
+    connection.release();
+  });
+}
+
+module.exports = { connection, connectDB };

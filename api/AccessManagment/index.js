@@ -1,10 +1,10 @@
 const AccessManagment = require("express").Router()
-const {CustomerLoginController} = require("./controllers/CustomerLogin")
+const { CustomerEmailValidationController, CustomerGenerateOtpController } = require("./controllers/CustomerLogin")
 
-AccessManagment.get("/",(req,res)=>{
-    res.send("hello");
-})
 
-AccessManagment.get("/login",CustomerLoginController)
+
+AccessManagment.get("/emailvalidation", CustomerEmailValidationController)
+AccessManagment.get("/generateotp", CustomerGenerateOtpController)
+
 
 exports.AccessManagment = AccessManagment;
