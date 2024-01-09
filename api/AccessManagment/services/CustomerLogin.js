@@ -41,8 +41,52 @@ const CustomerGenerateOtp = (email_id, otp) => {
     });
 }
 
+const CustomerValidateOtp = (email_id) => {
+    return new Promise(async (resolve, reject) => {
+        // Check if the email exists in swiftfolios_emailotp table
+        const checkEmailQuery = 'SELECT * FROM swiftfoliosuk.swiftfolios_emailotp WHERE email_id = ?';
+        const checkEmailParams = [email_id];
+
+        try {
+            const data = await ExecuteQuery(checkEmailQuery, checkEmailParams);
+            resolve(data)
+
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+const CustomerValidatePin = (email_id) => {
+    return new Promise(async (resolve, reject) => {
+        // Check if the email exists in swiftfolios_emailotp table
+        const checkEmailQuery = 'SELECT * FROM swiftfoliosuk.swiftfolios_accounts WHERE email_id = ?';
+        const checkEmailParams = [email_id];
+
+        try {
+            const data = await ExecuteQuery(checkEmailQuery, checkEmailParams);
+            resolve(data)
+
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+const CustomerResetPin = (email_id, pin) => {
+    return new Promise(async (resolve, reject) => {
+        // Check if the email exists in swiftfolios_emailotp table
+        const updatePinQuery = 'UPDATE swiftfoliosuk.swiftfolios_accounts SET pin = ? WHERE email_id = ?';
+        const updatePinParams = [pin, email_id];
+        try {
+            await ExecuteQuery(updatePinQuery, updatePinParams);
+            resolve('PIN reset successfully.');
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
 
 
 
-
-module.exports = { CustomerEmailValidation, CustomerGenerateOtp }
+module.exports = { CustomerEmailValidation, CustomerGenerateOtp, CustomerValidateOtp, CustomerValidatePin, CustomerResetPin }
