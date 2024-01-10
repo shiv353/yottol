@@ -1,18 +1,16 @@
-const {ExecuteQuery}  = require("../../../utils/ExecuteQuery")
+const { ExecuteQuery } = require("../../../utils/ExecuteQuery")
 
-const CustomerEmailValidation =  async (email) => {
-    return new Promise (async (resolve,reject) =>{
-        const query = `SELECT * FROM  swiftfoliosuk.swiftfolios_accounts WHERE email_id = ?`;
-        const param = [email];
-
+const CustomerEmailValidation = (email_id) => {
+    return new Promise(async (resolve, reject) => {
+        const query = 'SELECT * FROM swiftfolios_accounts WHERE email_id = ?';
+        const params = [email_id];
         try {
-            const data = await ExecuteQuery(query,param);
-            console.log(data);
+            const data = await ExecuteQuery(query, params);
             resolve(data);
         } catch (error) {
-            reject(error);
+            reject(error)
         }
-    })
+    });
 }
 
-module.exports = {CustomerEmailValidation}
+module.exports = { CustomerEmailValidation }
