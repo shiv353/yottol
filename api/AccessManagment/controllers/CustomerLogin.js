@@ -98,7 +98,7 @@ const CustomerValidatePinController = async (req, res, next) => {
 
 const CustomerResetPinController = async (req, res, next) => {
     const { email_id, pin } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
 
     if (isEmpty(email_id))
         return res.json({ error: true, message: "email id can't be empty" })
