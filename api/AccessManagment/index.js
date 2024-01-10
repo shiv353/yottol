@@ -3,11 +3,11 @@ const { CustomerEmailValidationController, CustomerGenerateOtpController, Custom
 
 
 
-AccessManagment.get("/emailvalidation", CustomerEmailValidationController)
-AccessManagment.post("/generateotp", CustomerGenerateOtpController)
-AccessManagment.get("/validateotp", CustomerValidateOtpController)
-AccessManagment.get("/validatepin", CustomerValidatePinController)
-AccessManagment.put("/resetpin", CustomerResetPinController)
+AccessManagment.get("/login/email-validation", CustomerEmailValidationController)
+AccessManagment.post("/generate-otp", CustomerGenerateOtpController)
+AccessManagment.post("/validate-otp", CustomerValidateOtpController)
+AccessManagment.post("/login/validate-pin", CustomerValidatePinController)
+AccessManagment.put("/reset-pin", CustomerResetPinController)
 
 
 

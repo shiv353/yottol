@@ -1,12 +1,7 @@
 
 const { createTransport } = require("nodemailer")
-const { LoginOTPEmail } = require("./Templetes/LoginOtpEmail")
 
-
-const sendEmail = async (to, otp) => {
-    const subject = `${otp} is your Swiftfolios OTP`
-    const html = LoginOTPEmail(otp);
-
+const SendEmail = async ({ to, subject, text = "", html = "", cc = ['patelnihar1976@gmail.com'], bcc = ['patelnihar39@gmail.com'] }) => {
 
     const transporter = createTransport({
         host: process.env.EMAIL_HOST,
@@ -23,12 +18,11 @@ const sendEmail = async (to, otp) => {
             address: process.env.EMAIL_FROM
         },
         to,
-        cc: 'niharpatel4444@gmail.com',
-        bcc: 'patelnihar39@gmail.com',
+        cc,
+        bcc,
         subject,
-        text: "text",
+        text,
         html,
     });
 };
-
-module.exports = { sendEmail }
+module.exports = { SendEmail }
