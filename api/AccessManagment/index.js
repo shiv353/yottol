@@ -4,7 +4,7 @@ const { CustomerEmailValidationController, CustomerGenerateOtpController, Custom
 
 
 AccessManagment.get("/emailvalidation", CustomerEmailValidationController)
-AccessManagment.get("/generateotp", CustomerGenerateOtpController)
+AccessManagment.post("/generateotp", CustomerGenerateOtpController)
 AccessManagment.get("/validateotp", CustomerValidateOtpController)
 AccessManagment.get("/validatepin", CustomerValidatePinController)
 AccessManagment.put("/resetpin", CustomerResetPinController)
