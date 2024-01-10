@@ -1,16 +1,10 @@
 const AccessManagment = require("express").Router()
-const { CustomerEmailValidationController, CustomerGenerateOtpController, CustomerValidateOtpController, CustomerValidatePinController, CustomerResetPinController } = require("./controllers/CustomerLogin")
+const {CustomerEmailController,CustomerGenerateOtpController,CustomerPinController,CustomerVarifyOtpController} = require("./controllers/CustomerSignup")
 
 
-
-AccessManagment.get("/emailvalidation", CustomerEmailValidationController)
-AccessManagment.post("/generateotp", CustomerGenerateOtpController)
-AccessManagment.get("/validateotp", CustomerValidateOtpController)
-AccessManagment.get("/validatepin", CustomerValidatePinController)
-AccessManagment.put("/resetpin", CustomerResetPinController)
-
-
-
-
+AccessManagment.get("/signup/email-validation",CustomerEmailController)
+AccessManagment.post("/signup/generate-otp",CustomerGenerateOtpController)
+AccessManagment.get("/signup/set-pin",CustomerPinController)
+AccessManagment.get("/signup/varify-otp",CustomerVarifyOtpController)
 
 exports.AccessManagment = AccessManagment;

@@ -1,32 +1,27 @@
 const dotenv = require("dotenv");
-const routes = require("./routes/index.js");
-const express = require('express');
-const cors = require('cors')
+const routes  =require("./routes/index.js")
 const { connectDB } = require("./connection/index.js");
 
-const app = express();
-
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
 
 dotenv.config({
   path: "./.env",
 });
 
+const express = require('express')
+const app = express()
+const port = process.env.PORT
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
+
 connectDB();
 
-app.use("/api/v1", routes);
+app.use("/api/v1",routes)
 
-app.listen(process.env.PORT, () => {
-  console.log(`app listening on port ${process.env.PORT}`);
-});
-
-
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})

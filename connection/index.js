@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+
 const connection = mysql.createPool({
   host: "yottol-rds.copzpeo4bk3d.ap-south-1.rds.amazonaws.com",
   user: "root",
@@ -6,7 +7,6 @@ const connection = mysql.createPool({
   database: "swiftfoliosuk",
   multipleStatements: true,
 });
-
 
 const connectDB = async () => {
   connection.getConnection((err, connection) => {
